@@ -1,0 +1,42 @@
+.homepage__quizzes {
+  padding: 0 0.75rem;
+}
+
+.row {
+  margin: 0;
+}
+
+.quizzes__pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 1rem;
+  list-style-type: none;
+}
+
+.quizzes__pagination li {
+  margin: 0.2rem;
+  background-color: white;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.quizzes__pagination li:hover {
+  background-color: black;
+  color: white;
+}
+
+.quizzes__pagination li:last-of-type,
+.quizzes__pagination li:first-of-type {
+  background: none;
+}
+
+.quizzes__pagination li:last-of-type:hover,
+.quizzes__pagination li:first-of-type:hover {
+  color: white;
+}

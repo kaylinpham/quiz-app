@@ -7,7 +7,7 @@ function Quiz(props) {
   return (
     <div className="quiz__container col-12 col-sm-6 col-md-4 col-lg-3">
       <div className="quiz">
-        <p className="quiz__title">
+        <p className="quiz__title text-truncate">
           <b>Vocabulary</b>
         </p>
         <br />

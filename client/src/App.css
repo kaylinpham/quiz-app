@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.app__navbar--item:last-of-type {
+.signout__item {
   position: absolute;
   bottom: 0;
   width: var(--navbar-desktop-width);

@@ -1,0 +1,36 @@
+.profile__avatar--container {
+  background-color: black;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.profile__avatar--image {
+  width: 8rem;
+  border-radius: 50%;
+  position: relative;
+  bottom: -4rem;
+  border: 3px solid white;
+}
+
+.profile__username {
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.my__quizzes--title {
+  color: white;
+  padding: 0 1.5rem 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.add__quiz--btn {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.add__quiz--btn:hover {
+  color: black;
+}

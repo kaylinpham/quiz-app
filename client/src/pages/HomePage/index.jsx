@@ -1,8 +1,7 @@
 import React from "react";
-import ReactPaginate from "react-paginate";
 
 import "./style.css";
-import Quiz from "../../components/Quiz";
+import Quizzes from "../../components/Quizzes";
 
 function HomePage(props) {
   return (
@@ -15,29 +14,7 @@ function HomePage(props) {
         />
         <i className="fas fa-search homepage__searchbar--icon"></i>
       </div>
-      <div className="homepage__quizzes row">
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-      </div>
-      {/* <ReactPaginate
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="<"
-        renderOnZeroPageCount={null}
-      /> */}
+      <Quizzes />
     </div>
   );
 }
