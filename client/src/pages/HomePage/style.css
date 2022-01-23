@@ -1,0 +1,24 @@
+.homepage__searchbar--container {
+  padding: 7rem 0 3rem 0;
+  text-align: center;
+}
+
+.homepage__searchbar {
+  border-radius: 1.4rem;
+  outline: none;
+  padding: 0.7rem 1rem;
+  border: none;
+}
+
+.homepage__searchbar--icon {
+  position: relative;
+  right: 1.8rem;
+}
+
+.homepage__quizzes {
+  padding: 0 1.5rem;
+}
+
+.row {
+  margin: 0;
+}
