@@ -12,5 +12,7 @@ namespace server.Models {
         public int QuizID {get; set;}
         public string Question {get; set;}
         public string Answer {get; set;}
+        [ForeignKey("QuizPackage")]
+        public int PackageID {get; set;}
     }
 }

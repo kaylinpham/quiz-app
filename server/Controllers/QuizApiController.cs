@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Models;
+using server.Models.DTO;
 
 namespace server.Controllers
 {
@@ -39,40 +40,33 @@ namespace server.Controllers
                 }
             }
         }
-        // public ActionResult<string> GetQuiz(){
-        //     string token;
-        //     token = Request.Headers["Authorization"].ToString();
+        //GET: api/TodoItems/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<QuizInfo>> GetQuizInfo(int id)
+        {
+            var quizInfo = await _context.QuizInfos.FindAsync(id);
+            if(quizInfo.UserID != getUID(Request)){
+                return BadRequest();
+            }
+            if (quizInfo == null)
+            {
+                return NotFound();
+            }
 
-        //     string getUID = _tokenHandler.ValidateToken(token);
-        //     return getUID;
-        // }
-
-        // GET: api/TodoItems/5
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<QuizInfo>> GetQuizInfo(int id)
-        // {
-        //     var quizInfo = await _context.QuizInfos.FindAsync(id);
-
-        //     if (quizInfo == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     return quizInfo;
-        // }
+            return quizInfo;
+        }
 
         //PUT: api/QuizApi/PutQuizInfo/5
         //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutQuizInfo(int id, QuizInfo quizInfo)
         {
-            if (id != quizInfo.QuizID)
+            if (id != quizInfo.QuizID || quizInfo.UserID != getUID(Request))
             {
                 return BadRequest();
             }
 
             _context.Entry(quizInfo).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -94,12 +88,14 @@ namespace server.Controllers
 
         // POST: api/QuizApi/PostQuizInfo
         [HttpPost]
-        public async Task<ActionResult<QuizInfo>> PostQuizInfo(QuizInfo quizInfo)
+        public async Task<ActionResult<QuizInfo>> PostQuizInfo(QuizInfoDTO quizOnPost)
         {
-            //find if this is valid customer
             string uid = getUID(Request);
-
-            QuizInfo addNew = new QuizInfo(){UserID = uid, Question = quizInfo.Question, Answer = quizInfo.Answer};
+            var package = await _context.QuizPackages.FirstOrDefaultAsync(pack => pack.PackageName.ToUpper() == quizOnPost.PackageName.ToUpper());
+            if(package == null){
+                return BadRequest();
+            }
+            QuizInfo addNew = new QuizInfo(){UserID = uid, Question = quizOnPost.Question, Answer = quizOnPost.Answer, PackageID = package.PackageID};
             _context.QuizInfos.Add(addNew);
             await _context.SaveChangesAsync();
             return addNew;
@@ -109,21 +105,20 @@ namespace server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteQuizInfo(int id)
         {
-            string uid = getUID(Request);
 
-            var quizInfo = await _context.QuizInfos.FindAsync(id);
-            if (quizInfo == null)
-            {
-                return NotFound();
+            if(await ValidateUser(Request)){
+                var quizInfo = await _context.QuizInfos.FindAsync(id);
+                if (quizInfo == null)
+                {
+                    return NotFound();
+                }
+                if(quizInfo.UserID == getUID(Request)){
+                    _context.QuizInfos.Remove(quizInfo);
+                    await _context.SaveChangesAsync();
+                    return NoContent();
+                }
             }
-            if (quizInfo.UserID != uid){
-                return BadRequest();
-            }
-
-            _context.QuizInfos.Remove(quizInfo);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return BadRequest();
         }
 
         private bool QuizInfoExists(int id)

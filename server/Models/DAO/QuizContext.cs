@@ -9,5 +9,10 @@ namespace server.Models {
         }
         public DbSet<QuizInfo> QuizInfos {get; set;}
         public DbSet<User> Users {get; set;}
+        public DbSet<QuizPackage> QuizPackages {get; set;}
+        protected override void OnModelCreating (ModelBuilder builder){
+            base.OnModelCreating(builder);
+            builder.Entity<QuizPackage>().HasKey(c => new {c.PackageID, c.UserID});
+        }
     }
 }

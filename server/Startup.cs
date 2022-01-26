@@ -44,17 +44,6 @@ namespace server
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             });
-            //.AddJwtBearer(options => {
-            //     options.TokenValidationParameters = new TokenValidationParameters(){
-            //         // ValidateIssuer = true,
-            //         // ValidateAudience = true,
-            //         ValidateLifetime = false,
-            //         ValidateIssuerSigningKey = true,
-            //         // ValidIssuer = Configuration["Jwt:Issuer"],
-            //         // ValidAudience = Configuration["Jwt:Audience"],
-            //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-            //     };
-            // });
             services.AddDbContext<QuizContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
             });

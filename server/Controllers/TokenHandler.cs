@@ -64,10 +64,10 @@ namespace server.Controllers {
         }
         public string EncryptPassword(string password){
             string res = "";
-            string encryptionKey = "MAKV2SPBNI99212";
+            string encryptionKey = _config["SecretKey:PasswordEncryptKey"];
 
             byte[] toBytePassword = Encoding.Unicode.GetBytes(password);
-            byte[] salt = Encoding.Unicode.GetBytes("HelloWorld");
+            byte[] salt = Encoding.Unicode.GetBytes(_config["SecretKey:PasswordEncryptStringSalt"]);
             using (Aes encryptor = Aes.Create()){
                 Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(encryptionKey, salt);
                 encryptor.Key = pdb.GetBytes(32);
@@ -84,9 +84,9 @@ namespace server.Controllers {
         }
         public string DecryptPassword(string encrypted){
             string res = "";
-            string encryptionKey = "MAKV2SPBNI99212";
+            string encryptionKey = _config["SecretKey:PasswordEncryptKey"];
             byte[] toByteEncrypted = Convert.FromBase64String(encrypted);
-            byte[] salt = Encoding.Unicode.GetBytes("HelloWorld");
+            byte[] salt = Encoding.Unicode.GetBytes(_config["SecretKey:PasswordEncryptStringSalt"]);
             using (Aes decryptor = Aes.Create()){
                 Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(encryptionKey, salt);
                 decryptor.Key = pdb.GetBytes(32);
