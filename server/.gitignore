@@ -13,6 +13,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+bin.*
 
 # Files built by Visual Studio
 *_i.c
