@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Models;
 using server.Models.DTO;
+using server.Auth;
 
 namespace server.Controllers
 {

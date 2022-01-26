@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace server.Models {
     [Table("QuizInfo")]
@@ -14,6 +15,7 @@ namespace server.Models {
         public string Answer {get; set;}
         [ForeignKey("QuizPackage")]
         public int PackageID {get; set;}
+        [JsonIgnore]
         public QuizPackage QuizPackage {get; set;}
     }
 }

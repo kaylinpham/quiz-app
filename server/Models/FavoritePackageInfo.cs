@@ -6,7 +6,7 @@ namespace server.Models {
         [Key]
         public int InfoID {get; set;}
         [ForeignKey("User")]
-        public int UserID {get; set;}
+        public string UserID {get; set;}
         [ForeignKey("QuizPackage")]
         public int PackageID {get; set;}
     }
