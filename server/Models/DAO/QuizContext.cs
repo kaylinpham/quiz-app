@@ -12,7 +12,11 @@ namespace server.Models {
         public DbSet<QuizPackage> QuizPackages {get; set;}
         protected override void OnModelCreating (ModelBuilder builder){
             base.OnModelCreating(builder);
-            builder.Entity<QuizPackage>().HasKey(c => new {c.PackageID, c.UserID});
+            builder.Entity<QuizInfo>().HasOne(b => b.QuizPackage).WithMany(p => p.Quizzes).OnDelete(DeleteBehavior.Cascade);
+        }
+        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder){
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.LogTo(Console.WriteLine);
         }
     }
 }

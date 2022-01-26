@@ -131,3 +131,4 @@ G:\quizapp\quiz-app\server\obj\Debug\net5.0\server.dll
 G:\quizapp\quiz-app\server\obj\Debug\net5.0\ref\server.dll
 G:\quizapp\quiz-app\server\obj\Debug\net5.0\server.pdb
 G:\quizapp\quiz-app\server\obj\Debug\net5.0\server.genruntimeconfig.cache
+G:\quizapp\quiz-app\server\bin\Debug\net5.0\secret.json

@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = server
-build_property.ProjectDir = G:\quizapp\quiz-app\server\
+build_property.ProjectDir = g:\quizapp\quiz-app\server\
