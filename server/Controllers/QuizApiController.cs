@@ -23,7 +23,6 @@ namespace server.Controllers
             _tokenHandler = tknHandler;
         }
 
-        // GET: api/QuizApi
         [HttpGet]
         public async Task<ActionResult<IEnumerable<QuizInfo>>> GetQuizInfos()
         {
@@ -41,7 +40,7 @@ namespace server.Controllers
                 }
             }
         }
-        //GET: api/TodoItems/5
+
         [HttpGet("{id}")]
         public async Task<ActionResult<QuizInfo>> GetQuizInfo(int id)
         {
@@ -57,8 +56,7 @@ namespace server.Controllers
             return quizInfo;
         }
 
-        //PUT: api/QuizApi/PutQuizInfo/5
-        //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutQuizInfo(int id, QuizInfo quizInfo)
         {
@@ -87,7 +85,7 @@ namespace server.Controllers
             return NoContent();
         }
 
-        // POST: api/QuizApi/PostQuizInfo
+
         [HttpPost]
         public async Task<ActionResult<QuizInfo>> PostQuizInfo(QuizInfoDTO quizOnPost)
         {
@@ -102,7 +100,6 @@ namespace server.Controllers
             return addNew;
         }
 
-        // DELETE: api/QuizApi/DeleteQuizInfo/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteQuizInfo(int id)
         {
