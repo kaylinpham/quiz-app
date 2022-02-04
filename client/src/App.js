@@ -7,7 +7,6 @@ import {
 
 import "./App.css";
 import Favorite from "./pages/Favorite";
-import History from "./pages/History";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -29,11 +28,6 @@ const NAVBAR_ITEMS = [
     title: "Favorite",
     class: "fas fa-heart",
     path: "/user/favorite",
-  },
-  {
-    title: "Recently",
-    class: "fas fa-history",
-    path: "/history",
   },
 ];
 
@@ -71,7 +65,6 @@ function App() {
             <Route exact path="/auth/login" element={<Login />}></Route>
             <Route exact path="/auth/signup" element={<SignUp />}></Route>
             <Route exact path="/user/favorite" element={<Favorite />}></Route>
-            <Route exact path="/history" element={<History />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </div>
