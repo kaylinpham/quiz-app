@@ -1,0 +1,20 @@
+.question__container {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.question__container > textarea {
+  border-radius: var(--common-border-radius);
+  border: 1px solid var(--app-bg-color);
+  outline: none;
+  padding: 0.5rem;
+  resize: none;
+}
+
+.question__order {
+  font-size: 1.2rem;
+  height: 100%;
+  font-weight: bold;
+}

@@ -6,12 +6,14 @@ import {
 } from "react-router-dom";
 
 import "./App.css";
-import Favorite from "./pages/Favorite";
+import Editting from "./pages/Editting";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
+import QuizDetails from "./pages/QuizDetails";
 import SignUp from "./pages/SignUp";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const NAVBAR_ITEMS = [
   {
@@ -24,14 +26,16 @@ const NAVBAR_ITEMS = [
     class: "fas fa-user",
     path: "/me",
   },
-  {
-    title: "Favorite",
-    class: "fas fa-heart",
-    path: "/user/favorite",
-  },
+  // {
+  //   title: "Favorite",
+  //   class: "fas fa-heart",
+  //   path: "/user/favorite",
+  // },
 ];
 
 function App() {
+  const token = localStorage.getItem("Authorization");
+
   return (
     <Router>
       <div className="app__container">
@@ -49,22 +53,27 @@ function App() {
                 <i className={item.class}></i>
               </NavLink>
             ))}
-            <li
-              title="Signout"
-              key="Signout"
-              className="app__navbar--item signout__item"
-            >
-              <i className="fas fa-sign-out-alt"></i>
-            </li>
+            {!!token && (
+              <li
+                title="Signout"
+                key="Signout"
+                className="app__navbar--item signout__item"
+              >
+                <i className="fas fa-sign-out-alt"></i>
+              </li>
+            )}
           </ul>
         </div>
         <div className="app_router">
           <Routes>
             <Route exact path="/" element={<HomePage />}></Route>
-            <Route exact path="/me" element={<Profile />}></Route>
+            {/* <Route exact path="/me" element={<ProtectedRoute />}> */}
+            <Route exact path="/me" element={<Profile />} />
+            <Route exact path="/me/quiz" element={<Editting />} />
+            {/* </Route> */}
             <Route exact path="/auth/login" element={<Login />}></Route>
             <Route exact path="/auth/signup" element={<SignUp />}></Route>
-            <Route exact path="/user/favorite" element={<Favorite />}></Route>
+            <Route exact path="/quiz/:id" element={<QuizDetails />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </div>

@@ -1,0 +1,42 @@
+.editting__form {
+  margin: auto;
+  background-color: white;
+  padding: 2rem;
+  height: 100vh;
+}
+
+.questions {
+  overflow: auto;
+  height: 75vh;
+  margin-top: 0.5rem;
+}
+
+.editting__action {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 1rem;
+}
+
+.editting__action--save {
+  background-color: var(--app-bg-color);
+  border: none;
+  padding: 0.6rem 2rem;
+  color: white;
+  border-radius: 5px;
+}
+
+.editting__action--save:hover {
+  background-color: black;
+}
+
+.editting__action--cancel {
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
+
+.editting__action--cancel:hover {
+  background: none;
+  color: var(--app-bg-color);
+}

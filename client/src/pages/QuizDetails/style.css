@@ -1,0 +1,27 @@
+.quiz__details--container {
+  padding-top: 5rem;
+}
+
+.question__slides {
+  background-color: white;
+  margin: auto;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--common-border-radius);
+}
+
+.quiz__details--navigation {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+}
+
+.quiz__details--navigation > i {
+  cursor: pointer;
+}
+
+.quiz__details--navigation > i:hover {
+  color: black;
+}

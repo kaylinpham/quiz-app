@@ -1,6 +1,8 @@
 import React from "react";
-import Quizzes from "../../components/Quizzes";
+import { Link } from "react-router-dom";
+
 import avatar from "../../assets/images/avatar.jpeg";
+import Quizzes from "../../components/Quizzes";
 import "./style.css";
 
 function Profile(props) {
@@ -12,9 +14,11 @@ function Profile(props) {
       <p className="profile__username">kaylinpham</p>
       <div className="my__quizzes--title">
         <h2>Yours &nbsp;</h2>
-        <span className="add__quiz--btn">
-          <i title="Add new quiz" class="fas fa-plus-circle"></i>
-        </span>
+        <Link to="/me/quiz">
+          <span className="add__quiz--btn">
+            <i title="Add new quiz" className="fas fa-plus-circle"></i>
+          </span>
+        </Link>
       </div>
       <Quizzes />
     </div>

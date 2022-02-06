@@ -1,0 +1,54 @@
+.login__form--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login__form {
+  background-color: white;
+  border-radius: var(--common-border-radius);
+  padding: 3rem 1.5rem;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  outline: none;
+  border: 1px solid var(--app-bg-color);
+  border-radius: 5px;
+}
+
+.message__invalid {
+  color: rgb(190, 0, 0);
+}
+
+.login__btn {
+  background-color: var(--app-bg-color);
+  border: none;
+  padding: 0.6rem;
+  width: 100%;
+  color: white;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.login__btn:hover {
+  background-color: black;
+}
+
+.message__navigate {
+  font-size: 0.8rem;
+}
+
+.message__navigate > a {
+  color: var(--app-bg-color);
+}
+
+.message__navigate > a:hover {
+  text-decoration: underline;
+}
