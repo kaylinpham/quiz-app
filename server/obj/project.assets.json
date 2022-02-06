@@ -7296,26 +7296,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\truon\\.nuget\\packages\\": {}
+    "/Users/phamhagiang/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\quizapp\\quiz-app\\server\\server.csproj",
+      "projectUniqueName": "/Users/phamhagiang/Desktop/quiz-app/server/server.csproj",
       "projectName": "server",
-      "projectPath": "G:\\quizapp\\quiz-app\\server\\server.csproj",
-      "packagesPath": "C:\\Users\\truon\\.nuget\\packages\\",
-      "outputPath": "G:\\quizapp\\quiz-app\\server\\obj\\",
+      "projectPath": "/Users/phamhagiang/Desktop/quiz-app/server/server.csproj",
+      "packagesPath": "/Users/phamhagiang/.nuget/packages/",
+      "outputPath": "/Users/phamhagiang/Desktop/quiz-app/server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\truon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/phamhagiang/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7379,7 +7377,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.404/RuntimeIdentifierGraph.json"
       }
     }
   }
