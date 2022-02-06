@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using server.Models;
 using server.Auth;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace server.Controllers
 {
@@ -29,10 +31,10 @@ namespace server.Controllers
             string password = user.Password;
             var isExist = _context.Users.Where(userMem => userMem.UserName == name).FirstOrDefault();
             if(isExist != null){
-                return BadRequest();
+                    var log = new {Message = $"The username {user.UserName} existed."};
+                    var mess = JsonConvert.SerializeObject(log);
+                    return new ObjectResult(mess){StatusCode = StatusCodes.Status400BadRequest};
             }
-
-            //Save in database
             try {
                 Guid gen = Guid.NewGuid();
                 string uid = Convert.ToBase64String(gen.ToByteArray());
@@ -46,9 +48,7 @@ namespace server.Controllers
                 return token;
             } catch (Exception ex){
                 return "There was an error" + ex.ToString();
-            }
-            
-            
+            } 
         }
         [HttpPost]
         public ActionResult<string> Login(User user)
@@ -65,10 +65,6 @@ namespace server.Controllers
             }
             string token = tokenHandler.GenerateToken(isExist);
             return token;
-        }
-        [HttpGet]
-        public ActionResult<string> Test(){
-            return BadRequest();
         }
     }
 }
