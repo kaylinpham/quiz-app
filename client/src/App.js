@@ -67,10 +67,10 @@ function App() {
         <div className="app_router">
           <Routes>
             <Route exact path="/" element={<HomePage />}></Route>
-            {/* <Route exact path="/me" element={<ProtectedRoute />}> */}
-            <Route exact path="/me" element={<Profile />} />
-            <Route exact path="/me/quiz" element={<Editting />} />
-            {/* </Route> */}
+            <Route exact path="/me" element={<ProtectedRoute />}>
+              <Route exact path="/me" element={<Profile />} />
+              <Route exact path="/me/quiz" element={<Editting />} />
+            </Route>
             <Route exact path="/auth/login" element={<Login />}></Route>
             <Route exact path="/auth/signup" element={<SignUp />}></Route>
             <Route exact path="/quiz/:id" element={<QuizDetails />}></Route>

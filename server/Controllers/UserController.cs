@@ -31,7 +31,7 @@ namespace server.Controllers
             string password = user.Password;
             var isExist = _context.Users.Where(userMem => userMem.UserName == name).FirstOrDefault();
             if(isExist != null){
-                    var log = new {Message = $"The username {user.UserName} existed."};
+                    var log = new {Message = $"The username has already existed."};
                     var mess = JsonConvert.SerializeObject(log);
                     return new ObjectResult(mess){StatusCode = StatusCodes.Status400BadRequest};
             }

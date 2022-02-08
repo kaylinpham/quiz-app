@@ -14,7 +14,8 @@ function Quiz(props) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleFeatures = () => {
+  const toggleFeatures = (e) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
@@ -33,11 +34,8 @@ function Quiz(props) {
   });
 
   return (
-    <div
-      className="quiz__container col-12 col-sm-6 col-md-4 col-lg-3"
-      onClick={openQuizDetails}
-    >
-      <div className="quiz">
+    <div className="quiz__container col-12 col-sm-6 col-md-4 col-lg-3">
+      <div className="quiz" onClick={openQuizDetails}>
         <p className="quiz__title text-truncate">
           <b>Vocabulary</b>
         </p>
@@ -52,7 +50,10 @@ function Quiz(props) {
           />
           <span className="quiz__creator--name">&nbsp; kaylinpham</span>
           <div className="quiz__more">
-            <i className="fas fa-ellipsis-v" onClick={toggleFeatures}></i>
+            <i
+              className="fas fa-ellipsis-v"
+              onClick={(e) => toggleFeatures(e)}
+            ></i>
           </div>
         </div>
       </div>

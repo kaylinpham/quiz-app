@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.css";
 
-function Question(props) {
+function Question({ order }) {
   return (
     <div className="question__container">
-      <span className="question__order">1</span>
+      <span className="question__order">{order}</span>
       <textarea
         placeholder="Enter the question"
         name=""

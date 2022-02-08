@@ -1,5 +1,9 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import * as _ from "lodash";
+import axios from "axios";
+
+import { REQUEST_URL } from "../../constants/api-constants";
 import "./style.css";
 
 function SignUp(props) {
@@ -8,35 +12,35 @@ function SignUp(props) {
     password: "",
     confirm: "",
   });
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState(false);
 
   let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios
-    //   .post(`${REQUEST_URL}/user/login`, person, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((res) => {
-    //     if (res.status !== 200) {
-    //       console.log(res);
-    //       setIsValid(false);
-    //       setPerson({
-    //         password: "",
-    //         email: "",
-    //       });
-    //     } else {
-    //       localStorage.setItem("user", JSON.stringify(res.data.data));
-    //       navigate("/home");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setIsValid(false);
-    //     console.log(err);
-    //   });
+    axios
+      .post(`${REQUEST_URL}/user/register`, _.pick(user, ['username', 'password']), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status !== 200) {
+          console.log(res);
+          setIsValid(false);
+          setUser({
+            password: "",
+            email: "",
+          });
+        } else {
+          localStorage.setItem("user", JSON.stringify(res.data.data));
+          navigate("/auth/login");
+        }
+      })
+      .catch((err) => {
+        setIsValid(false);
+        console.log(err);
+      });
   };
 
   const handleChange = (e) => {
@@ -46,6 +50,16 @@ function SignUp(props) {
       return { ...person, [name]: value };
     });
   };
+
+  useEffect(() => {
+    if (
+      user.username.trim().length >= 6 &&
+      user.password.length >= 6 &&
+      user.password === user.confirm
+    )
+      setIsValid(true);
+    else setIsValid(false);
+  }, [user.username, user.password, user.confirm]);
 
   return (
     <div className="login__form--container">
@@ -77,16 +91,17 @@ function SignUp(props) {
           <input
             className="form__input"
             type="password"
-            id="password"
-            name="password"
+            id="confirm"
+            name="confirm"
             value={user.confirm}
             onChange={handleChange}
           />
         </div>
-        {!isValid && (
-          <p className="message__invalid">Thông tin không phù hợp</p>
-        )}
-        <button className="login__btn" onClick={handleSubmit}>
+        <button
+          className="login__btn"
+          onClick={handleSubmit}
+          disabled={!isValid}
+        >
           Sign up
         </button>
         <p className="message__navigate">

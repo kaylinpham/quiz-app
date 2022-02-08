@@ -3,11 +3,12 @@
   background-color: white;
   padding: 2rem;
   height: 100vh;
+  padding-top: 1.5rem;
 }
 
 .questions {
   overflow: auto;
-  height: 75vh;
+  height: 70vh;
   margin-top: 0.5rem;
 }
 
@@ -38,5 +39,25 @@
 
 .editting__action--cancel:hover {
   background: none;
+  color: var(--app-bg-color);
+}
+
+.quiz__accessibility {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.form__input--radio {
+  margin-right: 0.5rem;
+}
+
+.add__set--btn {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.add__set--btn:hover {
   color: var(--app-bg-color);
 }
