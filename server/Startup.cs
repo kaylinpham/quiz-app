@@ -33,6 +33,13 @@ namespace server
             });
             services.AddSingleton<MyTokenHandler, MyTokenHandler>();
             services.AddSingleton<MyPasswordEncryptor, MyPasswordEncryptor>();
+            services.AddCors(options => {
+                options.AddPolicy(name: "AllowAll", builder => {
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +53,8 @@ namespace server
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
