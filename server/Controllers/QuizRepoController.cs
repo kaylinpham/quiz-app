@@ -24,6 +24,9 @@ namespace server.Controllers {
             if(uid == null){
                 return BadRequest();
             }
+            if(await _context.QuizPackages.FirstOrDefaultAsync(quiz => quiz.PackageName == quizPackage.PackageName) != null){
+                return BadRequest();
+            }
             quizPackage.UserID = uid;
             await _context.QuizPackages.AddAsync(quizPackage);
             await _context.SaveChangesAsync();
