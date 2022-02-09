@@ -250,7 +250,6 @@ G:/quizapp/quiz-app/server/bin/Debug/net5.0/secret.json
 /Users/phamhagiang/Desktop/quiz-app/server/bin/Debug/net5.0/runtimes/win-arm64/lib/net5.0/dotnet-aspnet-codegenerator-design.exe
 /Users/phamhagiang/Desktop/quiz-app/server/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /Users/phamhagiang/Desktop/quiz-app/server/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
-/Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.csproj.AssemblyReference.cache
 /Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.GeneratedMSBuildEditorConfig.editorconfig
 /Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.AssemblyInfoInputs.cache
 /Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.AssemblyInfo.cs
@@ -266,3 +265,4 @@ G:/quizapp/quiz-app/server/bin/Debug/net5.0/secret.json
 /Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/ref/server.dll
 /Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.pdb
 /Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.genruntimeconfig.cache
+/Users/phamhagiang/Desktop/quiz-app/server/obj/Debug/net5.0/server.csprojAssemblyReference.cache
