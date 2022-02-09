@@ -35,7 +35,7 @@ namespace server
             services.AddSingleton<MyPasswordEncryptor, MyPasswordEncryptor>();
             services.AddCors(options => {
                 options.AddPolicy(name: "AllowAll", builder => {
-                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
         }
