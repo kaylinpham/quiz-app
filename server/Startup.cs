@@ -24,19 +24,22 @@ namespace server
         {
 
             services.AddControllers();
-            services.AddAuthentication(option => {
+            services.AddAuthentication(option =>
+            {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             });
-            services.AddDbContext<QuizContext>(options => {
+            services.AddDbContext<QuizContext>(options =>
+            {
                 options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
             });
             services.AddSingleton<MyTokenHandler, MyTokenHandler>();
             services.AddSingleton<MyPasswordEncryptor, MyPasswordEncryptor>();
-            services.AddCors(options => {
-                options.AddPolicy(name: "AllowAll", builder => {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AllowAll", builder =>
+                {
                     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-                    
                 });
             });
         }
@@ -49,22 +52,22 @@ namespace server
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAll");
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors("AllowAll");
-
             app.UseAuthorization();
 
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapControllerRoute(
-                     name: default,
-                     pattern: "{controller}/{action}/{id}"
-                 );
-             });
-             
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: default,
+                    pattern: "{controller}/{action}/{id}"
+                );
+            });
+
         }
     }
 }

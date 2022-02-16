@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+// import { useToasts } from "react-toast-notifications";
+
 import * as _ from "lodash";
 import axios from "axios";
 
@@ -15,31 +17,37 @@ function SignUp(props) {
   const [isValid, setIsValid] = useState(false);
 
   let navigate = useNavigate();
+  // const { addToast } = useToasts();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${REQUEST_URL}/user/register`, _.pick(user, ['username', 'password']), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        `${REQUEST_URL}/user/register`,
+        _.pick(user, ["username", "password"]),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         if (res.status !== 200) {
-          console.log(res);
           setIsValid(false);
           setUser({
+            username: "",
             password: "",
-            email: "",
+            confirm: "",
           });
+          // addToast(res.Message, { appearance: "error" });
         } else {
-          localStorage.setItem("user", JSON.stringify(res.data.data));
+          // addToast("Create user successfully", { appearance: "success" });
           navigate("/auth/login");
         }
       })
       .catch((err) => {
         setIsValid(false);
-        console.log(err);
+        // addToast(err, { appearance: "error" });
       });
   };
 

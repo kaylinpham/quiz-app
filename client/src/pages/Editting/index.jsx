@@ -6,11 +6,6 @@ import { PRIVATE, PUBLIC } from "../../constants/quiz-constants";
 import "./style.css";
 
 function Editting(props) {
-  const [quiz, setQuiz] = useState({
-    title: "",
-    setOfQuestions: [],
-    accessibility: PUBLIC,
-  });
   const [questionSets, setQuestionSets] = useState([
     { question: "", answer: "" },
     { question: "", answer: "" },
@@ -20,6 +15,11 @@ function Editting(props) {
     { question: "", answer: "" },
     { question: "", answer: "" },
   ]);
+  const [quiz, setQuiz] = useState({
+    title: "",
+    setOfQuestions: questionSets,
+    accessibility: PUBLIC,
+  });
   const scrollPointRef = useRef(null);
 
   const handleChange = (e) => {
@@ -61,7 +61,6 @@ function Editting(props) {
                 name="accessibility"
                 value={PUBLIC}
                 onChange={handleChange}
-                checked
               />
               <label htmlFor="accessibility_public">Public</label>
             </div>

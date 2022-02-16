@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import avatar from "../../assets/images/avatar.jpeg";
 import Quizzes from "../../components/Quizzes";

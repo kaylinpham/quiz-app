@@ -1,8 +1,10 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./style.css";
+import { REQUEST_URL } from "../../constants/api-constants";
 
-function Login(props) {
+function Login({ onReRender }) {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -13,29 +15,30 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios
-    //   .post(`${REQUEST_URL}/user/login`, person, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((res) => {
-    //     if (res.status !== 200) {
-    //       console.log(res);
-    //       setIsValid(false);
-    //       setPerson({
-    //         password: "",
-    //         email: "",
-    //       });
-    //     } else {
-    //       localStorage.setItem("user", JSON.stringify(res.data.data));
-    //       navigate("/home");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setIsValid(false);
-    //     console.log(err);
-    //   });
+    axios
+      .post(`${REQUEST_URL}/user/login`, user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status !== 200) {
+          setIsValid(false);
+          setUser({
+            username: "",
+            password: "",
+          });
+          // addToast(res.Message, { appearance: "error" });
+        } else {
+          localStorage.setItem("Authorization", res.data);
+          navigate("/me");
+          onReRender();
+        }
+      })
+      .catch((err) => {
+        setIsValid(false);
+        // addToast(err, { appearance: "error" });
+      });
   };
 
   const handleChange = (e) => {
